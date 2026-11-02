@@ -1,0 +1,198 @@
+[
+  {
+    "id": "exam-cs101",
+    "title": "Computer Science & Programming Assessment",
+    "subject": "Computer Science",
+    "description": "Standard CBT assessment covering Data Structures, Web Concepts, Algorithms, and Software Principles.",
+    "duration": 15,
+    "passPercentage": 60,
+    "maxViolations": 3,
+    "shuffleQuestions": false,
+    "shuffleOptions": false,
+    "createdAt": "2026-11-01T10:00:00.000Z",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "What is the worst-case time complexity of quicksort when using a naive pivot selection (e.g., always choosing the first element) on an already sorted array?",
+        "options": [
+          "O(n log n)",
+          "O(n²)",
+          "O(log n)",
+          "O(n)"
+        ],
+        "correctAnswer": 1,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "When an array is already sorted and the first element is always chosen as pivot, the partitioning yields subproblems of size 0 and n-1, resulting in O(n²) worst-case runtime."
+      },
+      {
+        "id": "q2",
+        "text": "Which HTTP status code corresponds to '401'?",
+        "options": [
+          "Forbidden",
+          "Unauthorized (Authentication required)",
+          "Not Found",
+          "Bad Request"
+        ],
+        "correctAnswer": 1,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "HTTP 401 indicates that the request requires user authentication. HTTP 403 indicates Forbidden (server understands but refuses)."
+      },
+      {
+        "id": "q3",
+        "text": "In relational database design, which Normal Form eliminates transitive dependencies of non-prime attributes on the primary key?",
+        "options": [
+          "First Normal Form (1NF)",
+          "Second Normal Form (2NF)",
+          "Third Normal Form (3NF)",
+          "Boyce-Codd Normal Form (BCNF)"
+        ],
+        "correctAnswer": 2,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "3NF requires the relation to be in 2NF and that no non-prime attribute is transitively dependent on any candidate key (A -> B -> C)."
+      },
+      {
+        "id": "q4",
+        "text": "Which data structure operates on a Last-In, First-Out (LIFO) access pattern?",
+        "options": [
+          "Queue",
+          "Stack",
+          "Priority Queue",
+          "Linked List"
+        ],
+        "correctAnswer": 1,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "A Stack works on Last-In, First-Out (LIFO), whereas a Queue operates on First-In, First-Out (FIFO)."
+      },
+      {
+        "id": "q5",
+        "text": "Which JavaScript method is used in single-page applications to add an entry to the browser's session history without reloading the page?",
+        "options": [
+          "history.forward()",
+          "history.pushState()",
+          "location.reload()",
+          "document.write()"
+        ],
+        "correctAnswer": 1,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "history.pushState() adds a state entry to the browser's session history stack without initiating a network navigation or page refresh."
+      },
+      {
+        "id": "q6",
+        "text": "In modern operating systems, which condition is NOT one of Coffman's four conditions required for a deadlock to occur?",
+        "options": [
+          "Mutual Exclusion",
+          "Hold and Wait",
+          "Preemption",
+          "Circular Wait"
+        ],
+        "correctAnswer": 2,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "The four Coffman conditions are: 1) Mutual Exclusion, 2) Hold and Wait, 3) No Preemption, 4) Circular Wait. Therefore, 'Preemption' prevents deadlocks; 'No Preemption' is the necessary condition."
+      },
+      {
+        "id": "q7",
+        "text": "Which transport layer protocol provides connection-oriented, reliable, and ordered delivery of byte streams?",
+        "options": [
+          "UDP",
+          "TCP",
+          "ICMP",
+          "ARP"
+        ],
+        "correctAnswer": 1,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "TCP (Transmission Control Protocol) is connection-oriented and provides reliable, ordered, and error-checked delivery of a stream of octets."
+      },
+      {
+        "id": "q8",
+        "text": "What does CSS property 'display: flex' establish on an element?",
+        "options": [
+          "A block formatting context with floats",
+          "A flex formatting context for all direct children",
+          "An inline table container",
+          "A grid track layout"
+        ],
+        "correctAnswer": 1,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "Setting display: flex turns the element into a flex container and establishes a flex formatting context for its direct children (flex items)."
+      }
+    ]
+  },
+  {
+    "id": "exam-apt202",
+    "title": "General Aptitude & Logical Reasoning",
+    "subject": "Aptitude",
+    "description": "General numerical aptitude, pattern recognition, and analytical reasoning test for competitive CBT examination.",
+    "duration": 10,
+    "passPercentage": 50,
+    "maxViolations": 3,
+    "shuffleQuestions": false,
+    "shuffleOptions": false,
+    "createdAt": "2026-11-01T12:00:00.000Z",
+    "questions": [
+      {
+        "id": "q-apt1",
+        "text": "Find the next number in the sequence: 3, 7, 15, 31, 63, ...",
+        "options": [
+          "95",
+          "127",
+          "125",
+          "129"
+        ],
+        "correctAnswer": 1,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "Each term is 2x + 1: (3*2)+1=7, (7*2)+1=15, (15*2)+1=31, (31*2)+1=63, (63*2)+1=127."
+      },
+      {
+        "id": "q-apt2",
+        "text": "A train 180 meters long is running at a speed of 54 km/h. How many seconds will it take to pass a stationary telegraph post?",
+        "options": [
+          "10 seconds",
+          "12 seconds",
+          "14 seconds",
+          "15 seconds"
+        ],
+        "correctAnswer": 1,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "Speed = 54 * (5/18) = 15 m/s. Time = Distance / Speed = 180 / 15 = 12 seconds."
+      },
+      {
+        "id": "q-apt3",
+        "text": "If in a certain code language, 'ROBOT' is coded as 'TQDQV', what is the code for 'SMART'?",
+        "options": [
+          "UOC TV",
+          "UOCVT",
+          "UOCUV",
+          "TOBSU"
+        ],
+        "correctAnswer": 1,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "Each letter is shifted forward by +2 in the alphabet: S(+2)=U, M(+2)=O, A(+2)=C, R(+2)=T, T(+2)=V => UOCTV."
+      },
+      {
+        "id": "q-apt4",
+        "text": "A shopkeeper sells an article at a 20% discount on marked price and still makes a 20% profit. If the cost price is $200, what is the marked price?",
+        "options": [
+          "$250",
+          "$280",
+          "$300",
+          "$320"
+        ],
+        "correctAnswer": 2,
+        "marks": 2,
+        "negativeMarks": 0.5,
+        "explanation": "Selling Price = 200 * 1.20 = $240. If Marked Price is M, 0.80 * M = 240 => M = 240 / 0.8 = $300."
+      }
+    ]
+  }
+]

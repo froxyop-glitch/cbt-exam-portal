@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Apex CBT - Secure Computer-Based Testing Portal</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header id="main-navbar" class="bg-white border-b border-gray-200 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="App.switchView('student-home')">
+        <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-black text-lg shadow-md shadow-indigo-200">
+          CBT
+        </div>
+        <div>
+          <span class="font-extrabold text-lg text-gray-900 tracking-tight">Apex<span class="text-indigo-600">Test</span></span>
+          <span class="hidden sm:inline-block ml-2 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 bg-indigo-50 text-indigo-700 rounded-full border border-indigo-200">
+            Secure CBT Portal
+          </span>
+        </div>
+      </div>
+
+      <!-- Navigation & Mode Switch -->
+      <div class="flex items-center space-x-3">
+        <button id="nav-student-btn" class="px-3.5 py-1.5 rounded-lg text-sm font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 transition">
+          Student Portal
+        </button>
+        <button id="nav-admin-btn" class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 transition flex items-center space-x-1.5">
+          <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <span>Admin Panel</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT WRAPPER ================= -->
+  <main class="flex-1 flex flex-col">
+
+    <!-- 1. VIEW: STUDENT HOME (EXAM CATALOG) -->
+    <section id="student-home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-1">
+      <!-- Hero Banner -->
+      <div class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-blue-900 rounded-3xl p-8 text-white shadow-xl mb-10 relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl">
+          <div class="inline-flex items-center space-x-2 bg-indigo-500/30 px-3 py-1 rounded-full text-xs font-semibold text-indigo-200 mb-3 border border-indigo-400/30">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Anti-Cheat Proctored Exam Environment</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Computer-Based Testing (CBT) Portal</h1>
+          <p class="mt-3 text-indigo-100 text-sm sm:text-base leading-relaxed">
+            Welcome to the standardized examination portal. All exams are proctored with strictly locked back-navigation, fullscreen lockdown, tab-switch monitoring, and real-time grading.
+          </p>
+        </div>
+        <!-- Background decorative badge -->
+        <div class="absolute -right-10 -bottom-10 opacity-10 text-white font-mono text-9xl font-black select-none pointer-events-none">
+          CBT
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-center space-x-3.5">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold">
+            🔒
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-900 text-sm">Locked Back-Tap & Navigation</h4>
+            <p class="text-xs text-gray-500">Browser back button, swipe back gestures & reload keys are disabled.</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-center space-x-3.5">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">
+            🖥️
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-900 text-sm">Fullscreen Proctored Mode</h4>
+            <p class="text-xs text-gray-500">Exams require uninterrupted fullscreen; exiting generates violation strikes.</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex items-center space-x-3.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+            ⚡
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-900 text-sm">Instant Scoring & Breakdown</h4>
+            <p class="text-xs text-gray-500">Immediate result analytics, answer explanations, and scorecard generation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exams List Section -->
+      <div class="mb-4 flex items-center justify-between">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900">Available Examinations</h2>
+          <p class="text-xs text-gray-500">Select an exam below to enter candidate registration and instructions</p>
+        </div>
+      </div>
+
+      <div id="student-exams-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered by App.renderExamCards() -->
+      </div>
+    </section>
+
+    <!-- 2. VIEW: PRE-EXAM INSTRUCTIONS & READINESS CHECK -->
+    <section id="student-instructions" class="hidden max-w-4xl mx-auto px-4 sm:px-6 py-8 w-full flex-1">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-xl">
+        <div class="border-b border-gray-200 pb-5 mb-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded">
+                Examination Hall Admission
+              </span>
+              <h2 id="instr-exam-title" class="text-2xl font-extrabold text-gray-900 mt-2">CBT Examination</h2>
+            </div>
+            <button onclick="App.switchView('student-home')" class="text-xs font-semibold text-gray-500 hover:text-gray-800 px-3 py-1.5 border border-gray-200 rounded-lg">
+              ← Cancel & Exit
+            </button>
+          </div>
+        </div>
+
+        <!-- Candidate Info Banner -->
+        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 mb-6 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div class="text-xs text-gray-500 font-medium">Candidate Name</div>
+            <div id="instr-candidate-name" class="font-bold text-gray-900 text-base">Candidate Name</div>
+          </div>
+          <div>
+            <div class="text-xs text-gray-500 font-medium">Roll / Reg. Number</div>
+            <div id="instr-candidate-roll" class="font-bold text-indigo-600 font-mono text-base">ROLL-001</div>
+          </div>
+          <div>
+            <div class="text-xs text-gray-500 font-medium">Total Duration</div>
+            <div id="instr-exam-duration" class="font-bold text-gray-900 text-base">15 Mins</div>
+          </div>
+          <div>
+            <div class="text-xs text-gray-500 font-medium">Questions</div>
+            <div id="instr-exam-questions" class="font-bold text-gray-900 text-base">10 Questions</div>
+          </div>
+          <div>
+            <div class="text-xs text-gray-500 font-medium">Pass Mark</div>
+            <div id="instr-exam-pass" class="font-bold text-emerald-600 text-base">50%</div>
+          </div>
+        </div>
+
+        <!-- Strict Rules & Instructions -->
+        <h3 class="font-bold text-gray-900 text-base mb-3 flex items-center">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-600 mr-2"></span>
+          Mandatory CBT Lockdown Rules & Anti-Cheating Protocol
+        </h3>
+
+        <div class="space-y-3 mb-6 text-sm text-gray-700 bg-red-50/50 p-5 rounded-2xl border border-red-200">
+          <div class="flex items-start space-x-3">
+            <span class="text-red-600 font-bold">1.</span>
+            <p><strong>Back-Tap & Back Navigation are strictly Locked:</strong> You cannot use the browser back button, backtap gesture, Alt+Left shortcut, or backspace. Trying to do so will pop a security alert toast and keep you on the exam screen.</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-red-600 font-bold">2.</span>
+            <p><strong>Mandatory Fullscreen:</strong> The exam will launch in full screen. Do not press ESC or exit fullscreen. Exiting fullscreen logs a security violation strike.</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-red-600 font-bold">3.</span>
+            <p><strong>No Tab Switching or Minimizing:</strong> Switching tabs or opening applications is strictly prohibited. You are allowed a maximum of <strong id="instr-max-violations" class="text-red-700 underline">3</strong> violation warnings before your exam is <strong>automatically submitted</strong>.</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-red-600 font-bold">4.</span>
+            <p><strong>Continuous Countdown:</strong> The exam timer runs continuously. If time runs out, answers are auto-saved and submitted.</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-red-600 font-bold">5.</span>
+            <p><strong>Navigation Controls:</strong> Use the on-screen question palette and next/previous buttons to navigate questions.</p>
+          </div>
+        </div>
+
+        <!-- Acknowledgment Checkbox -->
+        <div class="mb-6">
+          <label class="flex items-start space-x-3 cursor-pointer">
+            <input type="checkbox" id="instr-rules-agree" class="mt-1 w-5 h-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500">
+            <span class="text-sm font-semibold text-gray-800">
+              I have thoroughly read the instructions above. I understand that backtap and tab switching are locked, and I agree to proceed in full proctored lockdown mode.
+            </span>
+          </label>
+        </div>
+
+        <!-- Start Test Button -->
+        <button onclick="App.startExam()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-2xl text-base transition shadow-lg shadow-indigo-300 flex items-center justify-center space-x-2">
+          <span>Enter Fullscreen & Start Exam Now</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. VIEW: PROCTORED CBT EXAM INTERFACE -->
+    <section id="student-exam" class="hidden flex-1 flex flex-col bg-slate-900 text-white select-none">
+      <!-- Proctored Exam Top Bar -->
+      <header class="bg-slate-950 border-b border-slate-800 px-4 sm:px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-black text-sm">
+            CBT
+          </div>
+          <div>
+            <h2 id="exam-title-header" class="text-sm sm:text-base font-bold text-white tracking-tight">CBT Examination</h2>
+            <div id="exam-candidate-display" class="text-xs text-slate-400">Candidate Name (ROLL)</div>
+          </div>
+        </div>
+
+        <!-- Security Pill & Live Countdown Timer -->
+        <div class="flex items-center space-x-3 sm:space-x-4">
+          <!-- Anti-cheat status pill -->
+          <div id="anti-cheat-status-badge" class="hidden sm:flex items-center space-x-1.5 px-3 py-1 bg-green-900/60 text-green-300 border border-green-700/50 rounded-full text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+            <span>Back-Tap Locked</span>
+          </div>
+
+          <!-- Countdown Timer -->
+          <div class="bg-slate-800 border border-slate-700 px-3.5 py-1.5 rounded-xl flex items-center space-x-2">
+            <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span class="text-xs text-slate-400 font-medium">Time Left:</span>
+            <span id="exam-timer-display" class="font-mono font-bold text-base sm:text-lg text-emerald-400 tracking-wider">00:00</span>
+          </div>
+
+          <!-- Finish Button -->
+          <button onclick="App.openSubmitConfirmation()" class="bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-xl transition shadow-md">
+            Submit Test
+          </button>
+        </div>
+      </header>
+
+      <!-- Exam Main Workspace: Split View -->
+      <div class="flex-1 flex flex-col lg:flex-row overflow-hidden bg-slate-100 text-slate-900">
+        <!-- LEFT: Question Workspace (70% width) -->
+        <div class="flex-1 flex flex-col overflow-y-auto p-4 sm:p-6 lg:p-8">
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 flex-1 flex flex-col justify-between">
+            <div>
+              <!-- Question Header -->
+              <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-6">
+                <span id="current-q-num" class="text-xs sm:text-sm font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg">
+                  Question 1
+                </span>
+                <span id="current-q-marks" class="text-xs font-semibold text-gray-500 bg-gray-100 px-2.5 py-1 rounded-lg">
+                  +1.00 Marks
+                </span>
+              </div>
+
+              <!-- Question Text -->
+              <div class="mb-8">
+                <p id="current-q-text" class="text-base sm:text-lg font-medium text-gray-900 leading-relaxed whitespace-pre-wrap">
+                  Loading question text...
+                </p>
+              </div>
+
+              <!-- Options Selection -->
+              <div id="current-q-options" class="space-y-3 mb-8">
+                <!-- Dynamically rendered options cards -->
+              </div>
+            </div>
+
+            <!-- Question Bottom Actions Toolbar -->
+            <div class="pt-6 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center space-x-2">
+                <button onclick="App.clearCurrentResponse()" class="px-3.5 py-2 rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-50 font-medium text-xs sm:text-sm transition">
+                  Clear Response
+                </button>
+                <button onclick="App.markForReviewAndNext()" class="px-3.5 py-2 rounded-xl bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 font-semibold text-xs sm:text-sm transition">
+                  Mark for Review & Next
+                </button>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <button id="btn-prev-question" onclick="App.previousQuestion()" class="px-4 py-2 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 font-semibold text-xs sm:text-sm transition">
+                  ← Previous
+                </button>
+                <button onclick="App.saveAndNext()" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs sm:text-sm transition shadow-sm">
+                  Save & Next →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: CBT Question Palette & Legend (30% width) -->
+        <div class="w-full lg:w-96 bg-white border-t lg:border-t-0 lg:border-l border-gray-200 p-4 sm:p-6 flex flex-col justify-between overflow-y-auto">
+          <div>
+            <h4 class="font-bold text-gray-900 text-sm mb-3">Question Palette</h4>
+
+            <!-- CBT Official Status Legend -->
+            <div class="grid grid-cols-2 gap-2 text-[11px] mb-5 bg-slate-50 p-3 rounded-xl border border-slate-200 font-medium">
+              <div class="flex items-center space-x-2">
+                <span id="palette-count-answered" class="w-6 h-6 rounded-md bg-emerald-500 text-white font-bold flex items-center justify-center text-xs">0</span>
+                <span class="text-gray-700">Answered</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span id="palette-count-not-answered" class="w-6 h-6 rounded-md bg-rose-500 text-white font-bold flex items-center justify-center text-xs">0</span>
+                <span class="text-gray-700">Not Answered</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span id="palette-count-not-visited" class="w-6 h-6 rounded-md bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs">0</span>
+                <span class="text-gray-700">Not Visited</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span id="palette-count-marked" class="w-6 h-6 rounded-md bg-purple-600 text-white font-bold flex items-center justify-center text-xs">0</span>
+                <span class="text-gray-700">Marked for Review</span>
+              </div>
+              <div class="col-span-2 flex items-center space-x-2 pt-1">
+                <span id="palette-count-ans-marked" class="w-6 h-6 rounded-md bg-purple-600 ring-2 ring-emerald-400 text-white font-bold flex items-center justify-center text-xs">0</span>
+                <span class="text-gray-700">Answered & Marked for Review</span>
+              </div>
+            </div>
+
+            <!-- Question Number Buttons Grid -->
+            <div id="question-palette-grid" class="grid grid-cols-5 gap-2 max-h-72 overflow-y-auto p-1">
+              <!-- Dynamically populated buttons -->
+            </div>
+          </div>
+
+          <!-- Bottom Summary & Submit Action -->
+          <div class="mt-6 pt-4 border-t border-gray-100">
+            <button onclick="App.openSubmitConfirmation()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl text-sm transition shadow-md flex items-center justify-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>Review & Submit Exam</span>
+            </button>
+            <p class="text-center text-[11px] text-gray-400 mt-2">🔒 All navigation keys locked under proctoring</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. VIEW: RESULT SCORECARD & PERFORMANCE ANALYTICS -->
+    <section id="student-result" class="hidden max-w-5xl mx-auto px-4 sm:px-6 py-8 w-full flex-1">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-gray-200 shadow-xl">
+        <!-- Result Header -->
+        <div class="border-b border-gray-200 pb-6 mb-8 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded">
+              Examination Result Slip
+            </span>
+            <h2 id="res-student-name" class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2">Candidate Name</h2>
+            <p id="res-student-roll" class="text-sm text-gray-500 font-medium">Roll No: 1234 • Exam Title</p>
+          </div>
+          <div class="text-right flex flex-col items-end">
+            <div id="res-status-banner" class="py-2 px-4 rounded-full text-xs font-bold uppercase tracking-wider bg-green-100 text-green-800 border border-green-300">
+              PASSED
+            </div>
+            <div class="text-xs text-gray-400 mt-1">Status Verified</div>
+          </div>
+        </div>
+
+        <!-- Autosubmit alert banner if triggered -->
+        <div id="res-autosubmit-notice" class="hidden mb-6 p-4 rounded-2xl bg-amber-50 border border-amber-300 text-amber-900 text-sm">
+          ⚠️ Notice: Your exam was auto-submitted due to excessive violations.
+        </div>
+
+        <!-- Score Highlights -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+          <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-100 text-center">
+            <div class="text-xs font-semibold text-indigo-600">Total Score</div>
+            <div id="res-score-display" class="text-2xl font-black text-indigo-950 mt-1">0 / 0</div>
+          </div>
+          <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-100 text-center">
+            <div class="text-xs font-semibold text-indigo-600">Percentage</div>
+            <div id="res-percentage" class="text-2xl font-black text-indigo-950 mt-1">0%</div>
+          </div>
+          <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 text-center">
+            <div class="text-xs font-semibold text-emerald-700">Correct</div>
+            <div id="res-metric-correct" class="text-2xl font-black text-emerald-950 mt-1">0</div>
+          </div>
+          <div class="bg-rose-50 p-4 rounded-2xl border border-rose-100 text-center">
+            <div class="text-xs font-semibold text-rose-700">Incorrect</div>
+            <div id="res-metric-incorrect" class="text-2xl font-black text-rose-950 mt-1">0</div>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center">
+            <div class="text-xs font-semibold text-slate-600">Time Taken</div>
+            <div id="res-metric-time" class="text-2xl font-black text-slate-900 mt-1">0m 0s</div>
+          </div>
+          <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 text-center">
+            <div class="text-xs font-semibold text-amber-700">Violations</div>
+            <div id="res-metric-violations" class="text-2xl font-black text-amber-950 mt-1">0</div>
+          </div>
+        </div>
+
+        <!-- Question Breakdown Accordion -->
+        <div class="mb-8">
+          <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+            <span>Detailed Question Review & Explanations</span>
+          </h3>
+          <div id="res-questions-review">
+            <!-- Rendered by App.renderResultScreen() -->
+          </div>
+        </div>
+
+        <!-- Result Action Buttons -->
+        <div class="flex items-center justify-between pt-6 border-t border-gray-200">
+          <button onclick="window.print()" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl font-semibold text-sm transition flex items-center space-x-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            <span>Print Scorecard</span>
+          </button>
+          <button onclick="App.switchView('student-home')" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold text-sm transition shadow-md">
+            Return to Exam Portal Home
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. VIEW: ADMIN CONTROL PANEL -->
+    <section id="admin-view" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-1">
+      <!-- Admin Main View -->
+      <div id="admin-main-view">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">Admin Examination Console</h1>
+            <p class="text-xs sm:text-sm text-gray-500 mt-1">Configure exams, author multiple-choice questions, monitor candidate results & security strikes.</p>
+          </div>
+          <div class="flex items-center space-x-3">
+            <button onclick="AdminApp.openCreateExamModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition shadow-sm flex items-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+              <span>Create New Exam</span>
+            </button>
+            <button onclick="AdminApp.logout()" class="px-3.5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition">
+              Sign Out
+            </button>
+          </div>
+        </div>
+
+        <!-- Dashboard Stats Row -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+          <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+            <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Total Exams</div>
+            <div id="admin-stat-exams" class="text-2xl font-black text-gray-900 mt-1">0</div>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+            <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Total Questions</div>
+            <div id="admin-stat-questions" class="text-2xl font-black text-gray-900 mt-1">0</div>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+            <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Submissions</div>
+            <div id="admin-stat-submissions" class="text-2xl font-black text-gray-900 mt-1">0</div>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+            <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Avg Pass Score</div>
+            <div id="admin-stat-avg-score" class="text-2xl font-black text-indigo-600 mt-1">0%</div>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+            <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Violations Logged</div>
+            <div id="admin-stat-violations" class="text-2xl font-black text-amber-600 mt-1">0</div>
+          </div>
+        </div>
+
+        <!-- Exams Management Table -->
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden mb-10">
+          <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+            <h3 class="font-bold text-gray-900 text-base">Configured Examinations</h3>
+            <span class="text-xs text-gray-500">Click "Manage Questions" to author or edit questions for any exam</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-slate-50 text-gray-600 font-semibold border-b border-gray-200">
+                <tr>
+                  <th class="px-6 py-3.5">Exam Title</th>
+                  <th class="px-6 py-3.5">Subject</th>
+                  <th class="px-6 py-3.5">Duration</th>
+                  <th class="px-6 py-3.5">Config & Rules</th>
+                  <th class="px-6 py-3.5 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-exams-table-body">
+                <!-- Rendered by AdminApp.renderExamsList() -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Student Submissions & Proctoring Log Table -->
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+          <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-gray-900 text-base">Candidate Submissions & Proctoring Audit</h3>
+              <p class="text-xs text-gray-500">Audit candidate scores, time taken, and backtap / tab switch strikes</p>
+            </div>
+            <button onclick="AdminApp.fetchSubmissions(); AdminApp.renderSubmissionsList();" class="text-xs font-medium text-indigo-600 hover:text-indigo-800">
+              ↻ Refresh
+            </button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-slate-50 text-gray-600 font-semibold border-b border-gray-200">
+                <tr>
+                  <th class="px-6 py-3.5">Candidate</th>
+                  <th class="px-6 py-3.5">Exam</th>
+                  <th class="px-6 py-3.5">Score</th>
+                  <th class="px-6 py-3.5">Time Taken</th>
+                  <th class="px-6 py-3.5">Proctor Violations</th>
+                  <th class="px-6 py-3.5">Submitted</th>
+                  <th class="px-6 py-3.5 text-right">Audit</th>
+                </tr>
+              </thead>
+              <tbody id="admin-submissions-table-body">
+                <!-- Rendered by AdminApp.renderSubmissionsList() -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nested View: Questions Manager (Inside Admin View) -->
+      <div id="admin-questions-view" class="hidden">
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
+          <div class="flex items-center space-x-3">
+            <button onclick="AdminApp.closeQuestionsManager()" class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            </button>
+            <div>
+              <div class="flex items-center space-x-2">
+                <h2 id="qm-exam-title" class="text-2xl font-extrabold text-gray-900">Exam Title</h2>
+                <span id="qm-count-badge" class="text-xs bg-indigo-100 text-indigo-800 font-bold px-2.5 py-0.5 rounded-full">0 Questions</span>
+              </div>
+              <p id="qm-exam-badge" class="text-xs text-gray-500 mt-0.5">Subject • Duration</p>
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-2">
+            <button onclick="AdminApp.exportQuestionsJson()" class="px-3.5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-xs font-semibold transition">
+              Export Questions JSON
+            </button>
+            <button onclick="AdminApp.openAddQuestionModal()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition shadow-sm flex items-center space-x-1.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+              <span>Add New Question</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Questions List Container -->
+        <div id="qm-questions-list" class="space-y-4">
+          <!-- Dynamically populated questions cards -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= MODALS & OVERLAYS ================= -->
+
+  <!-- 1. Student Registration Modal -->
+  <div id="student-reg-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-gray-100">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-bold text-gray-900">Candidate Examination Entry</h3>
+        <button onclick="App.closeRegModal()" class="text-gray-400 hover:text-gray-600 text-lg">✕</button>
+      </div>
+
+      <div class="mb-4 p-3 bg-indigo-50 rounded-xl border border-indigo-100">
+        <div id="reg-modal-exam-title" class="font-bold text-indigo-900 text-sm">Exam Title</div>
+        <div id="reg-modal-details" class="text-xs text-indigo-600">Details</div>
+      </div>
+
+      <form onsubmit="App.submitRegistration(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Full Name *</label>
+          <input type="text" id="reg-student-name" required placeholder="e.g. John Doe" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Roll / Candidate Number (Optional)</label>
+          <input type="text" id="reg-student-roll" placeholder="e.g. CS-2026-088" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none font-mono">
+        </div>
+
+        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl text-sm transition shadow-md">
+          Proceed to CBT Rules & Readiness
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Admin Passcode Overlay -->
+  <div id="admin-login-overlay" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl text-center">
+      <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+        🔑
+      </div>
+      <h3 class="text-lg font-bold text-gray-900">Admin Authentication</h3>
+      <p class="text-xs text-gray-500 mt-1 mb-4">Enter admin passcode to configure examinations & view proctor logs.</p>
+
+      <form onsubmit="event.preventDefault(); (async () => { const p = document.getElementById('admin-passcode-input').value; const r = await AdminApp.authenticate(p); if (r.success) { document.getElementById('admin-login-overlay').classList.add('hidden'); } else { alert(r.message); } })();">
+        <input type="password" id="admin-passcode-input" placeholder="Enter Passcode (default: admin123)" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none text-center mb-3">
+        
+        <div class="text-[11px] text-gray-400 mb-4">
+          Demo passcode: <span class="font-mono font-bold text-indigo-600 cursor-pointer underline" onclick="document.getElementById('admin-passcode-input').value='admin123'">admin123</span>
+        </div>
+
+        <div class="space-y-2">
+          <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-xl text-sm transition shadow-sm">
+            Sign In to Admin Panel
+          </button>
+          <button type="button" onclick="App.switchView('student-home')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2 rounded-xl text-xs transition">
+            Back to Student Portal
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Create / Edit Exam Modal -->
+  <div id="exam-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-5">
+        <h3 id="exam-modal-title" class="text-lg font-bold text-gray-900">Create New CBT Exam</h3>
+        <button onclick="AdminApp.closeExamModal()" class="text-gray-400 hover:text-gray-600 text-lg">✕</button>
+      </div>
+
+      <form onsubmit="AdminApp.saveExamForm(event)" class="space-y-4">
+        <input type="hidden" id="exam-form-id">
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Exam Title *</label>
+          <input type="text" id="exam-form-title" required placeholder="e.g. Data Structures & Algorithms Assessment" class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Subject / Stream</label>
+            <input type="text" id="exam-form-subject" placeholder="e.g. Computer Science" class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Duration (Minutes)</label>
+            <input type="number" id="exam-form-duration" value="15" min="1" max="300" required class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Pass Mark (%)</label>
+            <input type="number" id="exam-form-pass-pct" value="50" min="1" max="100" required class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Max Violation Strikes</label>
+            <input type="number" id="exam-form-max-violations" value="3" min="1" max="10" required class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500" title="Number of tab switches or security strikes before exam automatically submits">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Description / Guidelines</label>
+          <textarea id="exam-form-description" rows="3" placeholder="Brief note or instructions for the exam" class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500"></textarea>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end space-x-3">
+          <button type="button" onclick="AdminApp.closeExamModal()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition">
+            Cancel
+          </button>
+          <button type="submit" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-bold transition shadow-sm">
+            Save Exam
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Add / Edit Question Modal -->
+  <div id="question-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-4">
+        <h3 id="q-modal-title" class="text-lg font-bold text-gray-900">Add CBT Question</h3>
+        <button onclick="AdminApp.closeQuestionModal()" class="text-gray-400 hover:text-gray-600 text-lg">✕</button>
+      </div>
+
+      <form onsubmit="AdminApp.saveQuestionForm(event)" class="space-y-4">
+        <input type="hidden" id="q-form-id">
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Question Text *</label>
+          <textarea id="q-form-text" rows="3" required placeholder="Enter the complete question text..." class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Marks (+)</label>
+            <input type="number" id="q-form-marks" value="2" step="0.5" min="0.5" required class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Negative Marking (-)</label>
+            <input type="number" id="q-form-neg-marks" value="0.5" step="0.25" min="0" class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500">
+          </div>
+        </div>
+
+        <!-- Options Container with Radio selector for correct answer -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="block text-xs font-bold text-gray-700 uppercase">
+              Answer Options (Select radio button for the CORRECT option)
+            </label>
+            <button type="button" onclick="AdminApp.addOptionInput()" class="text-xs text-indigo-600 font-bold hover:text-indigo-800">
+              + Add Option
+            </button>
+          </div>
+          
+          <div id="q-options-container" class="space-y-2.5">
+            <!-- Rendered by AdminApp.renderQuestionOptionsInputs() -->
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Explanation / Solution Note (Shown on Result Scorecard)</label>
+          <textarea id="q-form-explanation" rows="2" placeholder="Optional rationale for the correct answer..." class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500"></textarea>
+        </div>
+
+        <div class="pt-3 flex items-center justify-end space-x-3 border-t border-gray-100">
+          <button type="button" onclick="AdminApp.closeQuestionModal()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition">
+            Cancel
+          </button>
+          <button type="submit" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-bold transition shadow-sm">
+            Save Question
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Exam Submit Confirmation Modal -->
+  <div id="exam-submit-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 text-center shadow-2xl">
+      <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+        📝
+      </div>
+      <h3 class="text-lg font-bold text-gray-900">Confirm Exam Submission</h3>
+      <p class="text-xs text-gray-500 mt-1 mb-4">Please review your question status summary before finalizing your submission.</p>
+
+      <div class="grid grid-cols-3 gap-2 bg-slate-50 p-3 rounded-2xl border border-slate-200 mb-6 text-center">
+        <div>
+          <div class="text-[11px] text-gray-500">Total</div>
+          <div id="sum-total-q" class="text-lg font-bold text-gray-900">0</div>
+        </div>
+        <div>
+          <div class="text-[11px] text-emerald-700 font-semibold">Answered</div>
+          <div id="sum-ans-q" class="text-lg font-bold text-emerald-600">0</div>
+        </div>
+        <div>
+          <div class="text-[11px] text-rose-700 font-semibold">Unanswered</div>
+          <div id="sum-unans-q" class="text-lg font-bold text-rose-600">0</div>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-500 mb-5">
+        Once submitted, your answers will be evaluated immediately and you cannot return.
+      </p>
+
+      <div class="space-y-2">
+        <button onclick="App.submitExam(false)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-sm transition shadow-md">
+          Yes, Submit My Exam
+        </button>
+        <button onclick="App.closeSubmitConfirmation()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2.5 rounded-xl text-xs transition">
+          Resume Test
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Submission Inspector Modal (Admin Proctor & Answers Audit) -->
+  <div id="submission-inspect-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-4 border-b border-gray-200 pb-4">
+        <div>
+          <h3 id="sim-student-name" class="text-xl font-bold text-gray-900">Candidate Name</h3>
+          <p id="sim-roll-exam" class="text-xs text-gray-500">Roll & Exam info</p>
+        </div>
+        <div class="text-right">
+          <div id="sim-score" class="text-lg font-black text-indigo-600">0 / 0</div>
+          <div id="sim-status" class="text-xs font-bold text-green-600">PASSED</div>
+        </div>
+      </div>
+
+      <!-- Proctoring Violations Log -->
+      <div class="mb-6">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Proctoring & Anti-Cheat Audit Trail</h4>
+        <div id="sim-violations-list" class="space-y-1.5 max-h-36 overflow-y-auto">
+          <!-- Populated by AdminApp.inspectSubmission -->
+        </div>
+      </div>
+
+      <!-- Detailed Question breakdown -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-700 mb-3">Response Breakdown</h4>
+        <div id="sim-questions-breakdown" class="space-y-3">
+          <!-- Populated by AdminApp.inspectSubmission -->
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-gray-100 text-right">
+        <button onclick="AdminApp.closeInspectModal()" class="px-5 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-xl text-xs font-bold transition">
+          Close Inspector
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script src="/js/lockdown.js"></script>
+  <script src="/js/admin.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

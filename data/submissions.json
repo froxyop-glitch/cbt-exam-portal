@@ -1,0 +1,193 @@
+[
+  {
+    "id": "sub-mvzktjtj-824",
+    "examId": "exam-cs101",
+    "examTitle": "Computer Science & Programming Assessment",
+    "studentName": "Test Candidate",
+    "studentRoll": "TEST-001",
+    "submittedAt": "2026-11-02T18:12:29.719Z",
+    "totalQuestions": 8,
+    "attempted": 3,
+    "correct": 3,
+    "incorrect": 0,
+    "unanswered": 5,
+    "score": 6,
+    "totalMarks": 16,
+    "percentage": 37.5,
+    "passPercentage": 60,
+    "passed": false,
+    "timeTakenSeconds": 120,
+    "violations": 1,
+    "violationLog": [
+      {
+        "detail": "Student attempted back navigation via backtap",
+        "timestamp": "2026-11-02T23:42:00.000Z",
+        "type": "backtap_prevented"
+      }
+    ],
+    "itemizedResults": [
+      {
+        "questionId": "q1",
+        "index": 1,
+        "questionText": "What is the worst-case time complexity of quicksort when using a naive pivot selection (e.g., always choosing the first element) on an already sorted array?",
+        "options": [
+          "O(n log n)",
+          "O(n²)",
+          "O(log n)",
+          "O(n)"
+        ],
+        "studentAnswer": 1,
+        "correctAnswer": 1,
+        "isCorrect": true,
+        "isAnswered": true,
+        "marksAwarded": 2,
+        "explanation": "When an array is already sorted and the first element is always chosen as pivot, the partitioning yields subproblems of size 0 and n-1, resulting in O(n²) worst-case runtime."
+      },
+      {
+        "questionId": "q2",
+        "index": 2,
+        "questionText": "Which HTTP status code corresponds to '401'?",
+        "options": [
+          "Forbidden",
+          "Unauthorized (Authentication required)",
+          "Not Found",
+          "Bad Request"
+        ],
+        "studentAnswer": 1,
+        "correctAnswer": 1,
+        "isCorrect": true,
+        "isAnswered": true,
+        "marksAwarded": 2,
+        "explanation": "HTTP 401 indicates that the request requires user authentication. HTTP 403 indicates Forbidden (server understands but refuses)."
+      },
+      {
+        "questionId": "q3",
+        "index": 3,
+        "questionText": "In relational database design, which Normal Form eliminates transitive dependencies of non-prime attributes on the primary key?",
+        "options": [
+          "First Normal Form (1NF)",
+          "Second Normal Form (2NF)",
+          "Third Normal Form (3NF)",
+          "Boyce-Codd Normal Form (BCNF)"
+        ],
+        "studentAnswer": 2,
+        "correctAnswer": 2,
+        "isCorrect": true,
+        "isAnswered": true,
+        "marksAwarded": 2,
+        "explanation": "3NF requires the relation to be in 2NF and that no non-prime attribute is transitively dependent on any candidate key (A -> B -> C)."
+      },
+      {
+        "questionId": "q4",
+        "index": 4,
+        "questionText": "Which data structure operates on a Last-In, First-Out (LIFO) access pattern?",
+        "options": [
+          "Queue",
+          "Stack",
+          "Priority Queue",
+          "Linked List"
+        ],
+        "studentAnswer": null,
+        "correctAnswer": 1,
+        "isCorrect": false,
+        "isAnswered": false,
+        "marksAwarded": 0,
+        "explanation": "A Stack works on Last-In, First-Out (LIFO), whereas a Queue operates on First-In, First-Out (FIFO)."
+      },
+      {
+        "questionId": "q5",
+        "index": 5,
+        "questionText": "Which JavaScript method is used in single-page applications to add an entry to the browser's session history without reloading the page?",
+        "options": [
+          "history.forward()",
+          "history.pushState()",
+          "location.reload()",
+          "document.write()"
+        ],
+        "studentAnswer": null,
+        "correctAnswer": 1,
+        "isCorrect": false,
+        "isAnswered": false,
+        "marksAwarded": 0,
+        "explanation": "history.pushState() adds a state entry to the browser's session history stack without initiating a network navigation or page refresh."
+      },
+      {
+        "questionId": "q6",
+        "index": 6,
+        "questionText": "In modern operating systems, which condition is NOT one of Coffman's four conditions required for a deadlock to occur?",
+        "options": [
+          "Mutual Exclusion",
+          "Hold and Wait",
+          "Preemption",
+          "Circular Wait"
+        ],
+        "studentAnswer": null,
+        "correctAnswer": 2,
+        "isCorrect": false,
+        "isAnswered": false,
+        "marksAwarded": 0,
+        "explanation": "The four Coffman conditions are: 1) Mutual Exclusion, 2) Hold and Wait, 3) No Preemption, 4) Circular Wait. Therefore, 'Preemption' prevents deadlocks; 'No Preemption' is the necessary condition."
+      },
+      {
+        "questionId": "q7",
+        "index": 7,
+        "questionText": "Which transport layer protocol provides connection-oriented, reliable, and ordered delivery of byte streams?",
+        "options": [
+          "UDP",
+          "TCP",
+          "ICMP",
+          "ARP"
+        ],
+        "studentAnswer": null,
+        "correctAnswer": 1,
+        "isCorrect": false,
+        "isAnswered": false,
+        "marksAwarded": 0,
+        "explanation": "TCP (Transmission Control Protocol) is connection-oriented and provides reliable, ordered, and error-checked delivery of a stream of octets."
+      },
+      {
+        "questionId": "q8",
+        "index": 8,
+        "questionText": "What does CSS property 'display: flex' establish on an element?",
+        "options": [
+          "A block formatting context with floats",
+          "A flex formatting context for all direct children",
+          "An inline table container",
+          "A grid track layout"
+        ],
+        "studentAnswer": null,
+        "correctAnswer": 1,
+        "isCorrect": false,
+        "isAnswered": false,
+        "marksAwarded": 0,
+        "explanation": "Setting display: flex turns the element into a flex container and establishes a flex formatting context for its direct children (flex items)."
+      }
+    ]
+  },
+  {
+    "id": "sub-sample-01",
+    "examId": "exam-cs101",
+    "examTitle": "Computer Science & Programming Assessment",
+    "studentName": "Alex Rivers",
+    "studentRoll": "CS-2026-042",
+    "submittedAt": "2026-11-02T18:40:00.000Z",
+    "totalQuestions": 8,
+    "attempted": 8,
+    "correct": 7,
+    "incorrect": 1,
+    "unanswered": 0,
+    "score": 13.5,
+    "totalMarks": 16,
+    "percentage": 84.38,
+    "passed": true,
+    "timeTakenSeconds": 480,
+    "violations": 1,
+    "violationLog": [
+      {
+        "type": "backtap_prevented",
+        "timestamp": "2026-11-02T18:35:12.000Z",
+        "detail": "Attempted back navigation via browser back / swipe gesture"
+      }
+    ]
+  }
+]
