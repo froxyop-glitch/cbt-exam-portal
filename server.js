@@ -40,7 +40,7 @@ function writeData(filePath, data) {
 }
 
 // ----------------- ADMIN AUTH -----------------
-const ADMIN_PASSCODE = process.env.ADMIN_PASSCODE || 'admin123';
+const ADMIN_PASSCODE = process.env.ADMIN_PASSCODE || 'DATM199.';
 
 app.post('/api/admin/verify', (req, res) => {
   const { passcode } = req.body;

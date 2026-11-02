@@ -15,7 +15,7 @@ A modern, full-featured Computer-Based Testing (CBT) portal with an **Admin Ques
 - **Tab Switching & Blur Detection:** Detects when a candidate switches tabs, minimizes the window, or loses window focus, accumulating strikes towards auto-submission (default: 3 strikes).
 
 ### 2. 👨‍🏫 Admin Examination & Question Manager
-- **Admin Authentication:** Access admin console with passcode (Default: `admin123`).
+- **Admin Authentication:** Access admin console with passcode (`DATM199.`).
 - **Exam Configuration:** Set Title, Subject, Duration (minutes), Pass Mark (%), and Maximum Allowed Security Violations before auto-submit.
 - **Rich Question Authoring:**
   - Multiline question text
@@ -60,5 +60,9 @@ http://localhost:3000
 
 ---
 
-## 🔑 Default Credentials
-- **Admin Passcode:** `admin123`
+## 🔑 Credentials
+- **Admin Passcode:** `DATM199.`
+
+---
+
+made by @[https://github.com/froxyop-glitch](https://github.com/froxyop-glitch)

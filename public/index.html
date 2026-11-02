@@ -124,6 +124,11 @@
       <div id="student-exams-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Rendered by App.renderExamCards() -->
       </div>
+
+      <!-- Footer -->
+      <footer class="mt-12 pt-6 pb-2 border-t border-gray-200 text-center text-xs text-gray-500">
+        made by @<a href="https://github.com/froxyop-glitch" target="_blank" rel="noopener noreferrer" class="text-indigo-600 font-semibold hover:underline">https://github.com/froxyop-glitch</a>
+      </footer>
     </section>
 
     <!-- 2. VIEW: PRE-EXAM INSTRUCTIONS & READINESS CHECK -->
@@ -211,6 +216,11 @@
           <span>Enter Fullscreen & Start Exam Now</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
         </button>
+
+        <!-- Footer -->
+        <div class="mt-6 pt-4 border-t border-gray-100 text-center text-xs text-gray-500">
+          made by @<a href="https://github.com/froxyop-glitch" target="_blank" rel="noopener noreferrer" class="text-indigo-600 font-semibold hover:underline">https://github.com/froxyop-glitch</a>
+        </div>
       </div>
     </section>
 
@@ -344,6 +354,9 @@
               <span>Review & Submit Exam</span>
             </button>
             <p class="text-center text-[11px] text-gray-400 mt-2">🔒 All navigation keys locked under proctoring</p>
+            <div class="text-center text-[11px] text-gray-400 mt-1">
+              made by @<a href="https://github.com/froxyop-glitch" target="_blank" rel="noopener noreferrer" class="text-indigo-400 font-medium hover:underline">https://github.com/froxyop-glitch</a>
+            </div>
           </div>
         </div>
       </div>
@@ -421,6 +434,11 @@
           <button onclick="App.switchView('student-home')" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold text-sm transition shadow-md">
             Return to Exam Portal Home
           </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 pt-4 border-t border-gray-100 text-center text-xs text-gray-500">
+          made by @<a href="https://github.com/froxyop-glitch" target="_blank" rel="noopener noreferrer" class="text-indigo-600 font-semibold hover:underline">https://github.com/froxyop-glitch</a>
         </div>
       </div>
     </section>
@@ -557,6 +575,11 @@
           <!-- Dynamically populated questions cards -->
         </div>
       </div>
+
+      <!-- Admin Footer -->
+      <footer class="mt-12 pt-6 pb-2 border-t border-gray-200 text-center text-xs text-gray-500">
+        made by @<a href="https://github.com/froxyop-glitch" target="_blank" rel="noopener noreferrer" class="text-indigo-600 font-semibold hover:underline">https://github.com/froxyop-glitch</a>
+      </footer>
     </section>
 
   </main>
@@ -604,11 +627,7 @@
       <p class="text-xs text-gray-500 mt-1 mb-4">Enter admin passcode to configure examinations & view proctor logs.</p>
 
       <form onsubmit="event.preventDefault(); (async () => { const p = document.getElementById('admin-passcode-input').value; const r = await AdminApp.authenticate(p); if (r.success) { document.getElementById('admin-login-overlay').classList.add('hidden'); } else { alert(r.message); } })();">
-        <input type="password" id="admin-passcode-input" placeholder="Enter Passcode (default: admin123)" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none text-center mb-3">
-        
-        <div class="text-[11px] text-gray-400 mb-4">
-          Demo passcode: <span class="font-mono font-bold text-indigo-600 cursor-pointer underline" onclick="document.getElementById('admin-passcode-input').value='admin123'">admin123</span>
-        </div>
+        <input type="password" id="admin-passcode-input" placeholder="Enter Admin Passcode" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none text-center mb-4">
 
         <div class="space-y-2">
           <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-xl text-sm transition shadow-sm">
