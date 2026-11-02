@@ -40,7 +40,7 @@ function writeData(filePath, data) {
 }
 
 // ----------------- ADMIN AUTH -----------------
-const VALID_PASSCODES = ['DATM199', 'DATM199.'];
+const VALID_PASSCODES = ['ewebs2022'];
 
 app.post('/api/admin/verify', (req, res) => {
   const passcode = (req.body && req.body.passcode ? String(req.body.passcode).trim() : '');

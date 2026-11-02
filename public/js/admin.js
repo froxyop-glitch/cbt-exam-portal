@@ -48,9 +48,8 @@ const AdminApp = {
       }
     } catch (err) {
       console.warn('API verification offline or error, checking client fallback:', err);
-      // Resilient fallback for DATM199 and DATM199.
-      const normalized = cleanPasscode.toUpperCase();
-      if (normalized === 'DATM199' || normalized === 'DATM199.') {
+      // Resilient fallback for ewebs2022
+      if (cleanPasscode.toLowerCase() === 'ewebs2022') {
         this.isAuthenticated = true;
         this.authToken = 'cbt_admin_fallback_' + Date.now();
         sessionStorage.setItem('cbt_admin_token', this.authToken);
