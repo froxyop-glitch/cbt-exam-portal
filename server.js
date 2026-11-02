@@ -40,11 +40,14 @@ function writeData(filePath, data) {
 }
 
 // ----------------- ADMIN AUTH -----------------
-const ADMIN_PASSCODE = process.env.ADMIN_PASSCODE || 'DATM199.';
+const VALID_PASSCODES = ['DATM199', 'DATM199.'];
 
 app.post('/api/admin/verify', (req, res) => {
-  const { passcode } = req.body;
-  if (passcode === ADMIN_PASSCODE) {
+  const passcode = (req.body && req.body.passcode ? String(req.body.passcode).trim() : '');
+  const match = VALID_PASSCODES.includes(passcode) || 
+                VALID_PASSCODES.some(p => p.toLowerCase() === passcode.toLowerCase());
+
+  if (match) {
     res.json({ success: true, token: 'cbt_admin_session_token_' + Date.now() });
   } else {
     res.status(401).json({ success: false, message: 'Invalid Admin Passcode' });
